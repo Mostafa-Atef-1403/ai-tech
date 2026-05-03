@@ -34,9 +34,9 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <a href="#" className="flex items-center gap-3 group">
-          <div className="w-20 h-10 relative">
+          <div className="w-20 h-16 relative">
             <Image
-              src="/logo.jpg"
+              src="/favicon.jpg"
               alt="Ai Tech"
               fill
               className="object-contain"
