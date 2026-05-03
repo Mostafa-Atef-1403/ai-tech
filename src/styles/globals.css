@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=Noto+Kufi+Arabic:wght@300;400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-heading: 'Bebas Neue', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-arabic: 'Noto Kufi Arabic', sans-serif;
+
+  --gold: #C9A84C;
+  --gold-light: #E2C47A;
+  --gold-dark: #A0822A;
+  --dark: #0a0a0a;
+  --dark-100: #111111;
+  --dark-200: #1a1a1a;
+  --dark-300: #222222;
+  --dark-400: #2e2e2e;
+  --offwhite: #F0EAD6;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--dark);
+  color: var(--offwhite);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+[dir='rtl'] body,
+[dir='rtl'] p,
+[dir='rtl'] span,
+[dir='rtl'] li,
+[dir='rtl'] label,
+[dir='rtl'] input,
+[dir='rtl'] textarea,
+[dir='rtl'] button {
+  font-family: var(--font-arabic);
+}
+
+[dir='rtl'] h1,
+[dir='rtl'] h2,
+[dir='rtl'] h3,
+[dir='rtl'] h4 {
+  font-family: var(--font-arabic);
+  letter-spacing: 0;
+}
+
+/* Gold shimmer text utility */
+.gold-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--gold-dark) 0%,
+    var(--gold-light) 40%,
+    var(--gold) 50%,
+    var(--gold-light) 60%,
+    var(--gold-dark) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+  transform: translateZ(0); /* ← ADD THIS */
+  will-change: background-position; /* ← ADD THIS */
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+/* Noise texture overlay */
+
+.noise-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/noise.png');
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 1;
+  will-change: auto;
+}
+
+/* Section fade-up animation */
+
+
+/* Gold line divider */
+.gold-line {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--dark-100);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gold-dark);
+  border-radius: 2px;
+}
+
+/* Input styles */
+.input-field {
+  background: var(--dark-200);
+  border: 1px solid var(--dark-400);
+  color: var(--offwhite);
+  padding: 0.75rem 1rem;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s ease;
+  font-family: inherit;
+}
+
+.input-field:focus {
+  border-color: var(--gold);
+}
+
+.input-field::placeholder {
+  color: #555;
+}
