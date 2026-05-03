@@ -1,42 +1,42 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react'
-import Image from 'next/image'
-import { Menu, X } from 'lucide-react'
-import { useI18n } from '@/lib/i18n/context'
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import { Menu, X } from "lucide-react";
+import { useI18n } from "@/lib/i18n/context";
 
 export default function Navbar() {
-  const { t, toggleLocale, isRTL } = useI18n()
-  const [scrolled, setScrolled] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
+  const { t, toggleLocale, isRTL } = useI18n();
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40)
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    const handleScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navLinks = [
-    { label: t.nav.services, href: '#services' },
-    { label: t.nav.about, href: '#about' },
-    { label: t.nav.whyUs, href: '#why-us' },
-    { label: t.nav.contact, href: '#contact' },
-  ]
+    { label: t.nav.services, href: "#services" },
+    { label: t.nav.about, href: "#about" },
+    { label: t.nav.whyUs, href: "#why-us" },
+    { label: t.nav.contact, href: "#contact" },
+  ];
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-dark-100/95 backdrop-blur-sm border-b border-dark-400'
-          : 'bg-transparent'
+          ? "bg-dark-100/95 backdrop-blur-sm border-b border-dark-400"
+          : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <a href="#" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 relative">
+          <div className="w-20 h-10 relative">
             <Image
-              src="/Ai_Tech_Logo.jpeg"
+              src="/logo.jpg"
               alt="Ai Tech"
               fill
               className="object-contain"
@@ -44,7 +44,11 @@ export default function Navbar() {
           </div>
           <span
             className="text-offwhite text-lg font-semibold tracking-wide group-hover:text-gold transition-colors"
-            style={{ fontFamily: 'var(--font-heading)', fontSize: '1.4rem', letterSpacing: '0.05em' }}
+            style={{
+              fontFamily: "var(--font-heading)",
+              fontSize: "1.4rem",
+              letterSpacing: "0.05em",
+            }}
           >
             Ai Tech
           </span>
@@ -120,5 +124,5 @@ export default function Navbar() {
         </div>
       )}
     </header>
-  )
+  );
 }
